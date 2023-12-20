@@ -110,26 +110,26 @@ def train(args, labeled_trainloader, unlabeled_dataset, test_loader, val_loader,
             ## Data loading
 
             try:
-                (_, inputs_x_s, inputs_x), targets_x = labeled_iter.next()
+                (_, inputs_x_s, inputs_x), targets_x = labeled_iter.__next__()
             except:
                 if args.world_size > 1:
                     labeled_epoch += 1
                     labeled_trainloader.sampler.set_epoch(labeled_epoch)
                 labeled_iter = iter(labeled_trainloader)
-                (_, inputs_x_s, inputs_x), targets_x = labeled_iter.next()
+                (_, inputs_x_s, inputs_x), targets_x = labeled_iter.__next__()
             try:
-                (inputs_u_w, inputs_u_s, _), _ = unlabeled_iter.next()
+                (inputs_u_w, inputs_u_s, _), _ = unlabeled_iter.__next__()
             except:
                 if args.world_size > 1:
                     unlabeled_epoch += 1
                     unlabeled_trainloader.sampler.set_epoch(unlabeled_epoch)
                 unlabeled_iter = iter(unlabeled_trainloader)
-                (inputs_u_w, inputs_u_s, _), _ = unlabeled_iter.next()
+                (inputs_u_w, inputs_u_s, _), _ = unlabeled_iter.__next__()
             try:
-                (inputs_all_w, inputs_all_s, _), _ = unlabeled_all_iter.next()
+                (inputs_all_w, inputs_all_s, _), _ = unlabeled_all_iter.__next__()
             except:
                 unlabeled_all_iter = iter(unlabeled_trainloader_all)
-                (inputs_all_w, inputs_all_s, _), _ = unlabeled_all_iter.next()
+                (inputs_all_w, inputs_all_s, _), _ = unlabeled_all_iter.__next__()
             data_time.update(time.time() - end)
 
             b_size = inputs_x.shape[0]

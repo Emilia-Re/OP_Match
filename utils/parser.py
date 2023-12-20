@@ -63,7 +63,7 @@ def set_parser():
                         help='coefficient of unlabeled batch size')
     parser.add_argument('--total-steps', default=2 ** 19, type=int,
                         help='number of total steps to run')
-    parser.add_argument('--epochs', default=512, type=int,
+    parser.add_argument('--epochs', default=1, type=int,#方便测试，原来是512
                         help='number of epochs to run')
     parser.add_argument('--threshold', default=0.0, type=float,
                         help='pseudo label threshold')

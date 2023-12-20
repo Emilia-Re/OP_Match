@@ -511,7 +511,7 @@ def get_ood(dataset, id, test_only=False, image_size=None):
                                     transform=test_transform)
 
     elif dataset == 'cifar100':
-        test_set = datasets.CIFAR100(DATA_PATH, train=False, download=False,
+        test_set = datasets.CIFAR100(DATA_PATH, train=False, download=True,
                                      transform=test_transform)
 
     elif dataset == 'svhn':

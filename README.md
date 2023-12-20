@@ -29,10 +29,14 @@ To fully reproduce the results in evaluation, we also need SVHN, LSUN, ImageNet
 for CIFAR10, 100, and LSUN, DTD, CUB, Flowers, Caltech_256, Stanford Dogs for ImageNet-30.
 To prepare the datasets above, follow [CSI](https://github.com/alinlab/CSI).
 
+跑cifar10数据集一定要先把 SVHN, LSUN, ImageNet，CIFAR10，100下载到data文件夹下，并且解压，并要把那些点开头的
+图片文件删掉
 
 ```
 mkdir data
-ln -s path_to_each_dataset ./data/.
+ln -s path_to_each_dataset ./data/.   
+#建立一个软链接，相当于起个别名，运行这个指令会让data文件夹下
+#出现一个和数据集同名的文件，但是这个文件只是个链接。
 
 ## unzip filelist for imagenet_30 experiments.
 unzip files.zip

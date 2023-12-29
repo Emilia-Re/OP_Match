@@ -15,7 +15,7 @@ def main():
     args = set_parser()
     global best_acc
     global best_acc_val
-
+    args.local_rank = int(os.environ["LOCAL_RANK"])
     if args.local_rank == -1:
         device = torch.device('cuda', args.gpu_id)
         args.world_size = 1

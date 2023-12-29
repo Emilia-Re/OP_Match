@@ -6,9 +6,10 @@
 This is an PyTorch implementation of OpenMatch.
 This implementation is based on [Pytorch-FixMatch](https://github.com/kekmodel/FixMatch-pytorch).
 
+## Requirement 
+ use iomatch-requirement.txt
 
-
-## Requirements
+## Requirements(deprecated)
 - python 3.6+
 - torch 1.4
 - torchvision 0.5
@@ -17,6 +18,7 @@ This implementation is based on [Pytorch-FixMatch](https://github.com/kekmodel/F
 - tqdm
 - sklearn
 - apex (optional)
+
 
 See [Pytorch-FixMatch](https://github.com/kekmodel/FixMatch-pytorch) for the details.
 

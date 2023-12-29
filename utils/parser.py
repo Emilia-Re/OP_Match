@@ -57,13 +57,13 @@ def set_parser():
     parser.add_argument('--lambda_socr', default=0.5, type=float,
                     help='coefficient of SOCR loss, 0.5 for CIFAR10, ImageNet, '
                          '1.0 for CIFAR100')
-    parser.add_argument('--start_fix', default=10, type=int,
+    parser.add_argument('--start_fix', default=2, type=int,
                         help='epoch to start fixmatch training')
     parser.add_argument('--mu', default=2, type=int,
                         help='coefficient of unlabeled batch size')
     parser.add_argument('--total-steps', default=2 ** 19, type=int,
                         help='number of total steps to run')
-    parser.add_argument('--epochs', default=512, type=int,#方便测试，原来是512
+    parser.add_argument('--epochs', default=3, type=int,#方便测试，原来是512
                         help='number of epochs to run')
     parser.add_argument('--threshold', default=0.0, type=float,
                         help='pseudo label threshold')

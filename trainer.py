@@ -179,8 +179,9 @@ def train(args, labeled_trainloader, unlabeled_dataset, test_loader, val_loader,
                 with amp.scale_loss(loss, optimizer) as scaled_loss:
                     scaled_loss.backward()
             else:
-                torch.autograd.set_detect_anomaly(True)
-                loss.backward()
+                with torch.autograd.set_detect_anomaly(True):
+
+                    loss.backward()
 
             losses.update(loss.item())
             losses_x.update(Lx.item())

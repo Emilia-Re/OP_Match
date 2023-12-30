@@ -68,7 +68,7 @@ def set_parser():
     parser.add_argument('--threshold', default=0.0, type=float,
                         help='pseudo label threshold')
     ##
-    parser.add_argument('--eval-step', default=1024, type=int,
+    parser.add_argument('--eval-step', default=10, type=int,
                         help='number of eval steps to run')
 
     parser.add_argument('--start-epoch', default=0, type=int,

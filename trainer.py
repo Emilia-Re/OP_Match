@@ -48,9 +48,9 @@ def train(args, labeled_trainloader, unlabeled_dataset, test_loader, val_loader,
                   "Lab: {loss_x:.4f}. " \
                   "Open: {loss_o:.4f}"
     output_args = vars(args)
-    default_out += " OEM  {loss_oem:.4f}"
-    default_out += " SOCR  {loss_socr:.4f}"
-    default_out += " Fix  {loss_fix:.4f}"
+    default_out =default_out+ " OEM  {loss_oem:.4f}"
+    default_out =default_out+ " SOCR  {loss_socr:.4f}"
+    default_out = default_out+" Fix  {loss_fix:.4f}"
 
     model.train()
     unlabeled_dataset_all = copy.deepcopy(unlabeled_dataset)
@@ -113,7 +113,7 @@ def train(args, labeled_trainloader, unlabeled_dataset, test_loader, val_loader,
                 (_, inputs_x_s, inputs_x), targets_x = labeled_iter.__next__()
             except:
                 if args.world_size > 1:
-                    labeled_epoch += 1
+                    labeled_epoch=labeled_epoch+1
                     labeled_trainloader.sampler.set_epoch(labeled_epoch)
                 labeled_iter = iter(labeled_trainloader)
                 (_, inputs_x_s, inputs_x), targets_x = labeled_iter.__next__()
@@ -121,7 +121,7 @@ def train(args, labeled_trainloader, unlabeled_dataset, test_loader, val_loader,
                 (inputs_u_w, inputs_u_s, _), _ = unlabeled_iter.__next__()
             except:
                 if args.world_size > 1:
-                    unlabeled_epoch += 1
+                    unlabeled_epoch = unlabeled_epoch+1
                     unlabeled_trainloader.sampler.set_epoch(unlabeled_epoch)
                 unlabeled_iter = iter(unlabeled_trainloader)
                 (inputs_u_w, inputs_u_s, _), _ = unlabeled_iter.__next__()
@@ -149,7 +149,7 @@ def train(args, labeled_trainloader, unlabeled_dataset, test_loader, val_loader,
 
             ## Open-set entropy minimization
             L_oem = ova_ent(logits_open_u1) / 2.
-            L_oem += ova_ent(logits_open_u2) / 2.
+            L_oem =L_oem+ ova_ent(logits_open_u2) / 2.
 
             ## Soft consistenty regularization
             logits_open_u1 = logits_open_u1.view(logits_open_u1.size(0), 2, -1)

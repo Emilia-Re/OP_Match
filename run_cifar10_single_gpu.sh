@@ -1,2 +1,1 @@
-python main.py  --dataset cifar10 --num-labeled  400 --out myResult --arch wideresnet --lambda_oem 0.1 --lambda_socr 0.5 \
---batch-size 64 --lr 0.03 --expand-labels --seed 0 --opt_level O2  --mu 2
+python main.py  --dataset cifar10 --num-labeled  400 --out myResult --arch wideresnet --lambda_oem 0.1 --lambda_socr 0.5  --batch-size 64 --lr 0.03 --expand-labels --seed 0 --opt_level O2  --mu 2

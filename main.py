@@ -17,10 +17,10 @@ def main():
     global best_acc_val
 
     #用于单卡训练
-    try:
-        args.local_rank =int(os.environ["LOCAL_RANK"])
-    except:
-        pass
+    # try:
+    #     args.local_rank =int(os.environ["LOCAL_RANK"])
+    # except:
+    #     pass
 
     if args.local_rank == -1:
         device = torch.device('cuda', args.gpu_id)

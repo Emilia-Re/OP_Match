@@ -9,11 +9,11 @@ def set_parser():
                         help='id(s) for CUDA_VISIBLE_DEVICES')
     parser.add_argument('--num-workers', type=int, default=4,
                         help='number of workers')
-    parser.add_argument('--seed', default=None, type=int,
+    parser.add_argument('--seed', default=0, type=int,
                         help="random seed")
     parser.add_argument("--amp", action="store_true",
                         help="use 16-bit (mixed) precision through NVIDIA apex AMP")
-    parser.add_argument("--opt_level", type=str, default="O1",
+    parser.add_argument("--opt_level", type=str, default="O2",
                         help="apex AMP optimization level selected in ['O0', 'O1', 'O2', and 'O3']."
                              "See details at https://nvidia.github.io/apex/amp.html")
     parser.add_argument("--local_rank", type=int, default=-1,

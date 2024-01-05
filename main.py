@@ -23,7 +23,8 @@ def main():
     #     pass
 
     if args.local_rank == -1:
-        device = torch.device('cuda', args.gpu_id)
+        # device = torch.device('cuda', args.gpu_id)
+        device=torch.device("cpu")
         args.world_size = 1
         args.n_gpu = torch.cuda.device_count()
     else:

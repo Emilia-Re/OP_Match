@@ -20,7 +20,7 @@ def set_parser():
                         help="For distributed training: local_rank")
     parser.add_argument('--no-progress', action='store_true',
                     help="don't use progress bar")
-    parser.add_argument('--eval_only', type=int, default=0,
+    parser.add_argument('--eval_only', type=int, default=1,#原本是0
                         help='1 if evaluation mode ')
     parser.add_argument('--num_classes', type=int, default=6,
                         help='for cifar10')

@@ -61,15 +61,15 @@ def set_parser():
                         help='epoch to start fixmatch training')
     parser.add_argument('--mu', default=2, type=int,
                         help='coefficient of unlabeled batch size')
-    parser.add_argument('--total-steps', default=2 ** 19, type=int,
-                        help='number of total steps to run')
+    parser.add_argument('--total-steps', default=1, type=int,
+                        help='number of total steps to run') #2 ** 19
     parser.add_argument('--epochs', default=2, type=int,#方便测试，原来是512
                         help='number of epochs to run')
     parser.add_argument('--threshold', default=0.0, type=float,
                         help='pseudo label threshold')
     ##
-    parser.add_argument('--eval-step', default=1024, type=int,
-                        help='number of eval steps to run')
+    parser.add_argument('--eval-step', default=1, type=int,
+                        help='number of eval steps to run')#1024
 
     parser.add_argument('--start-epoch', default=0, type=int,
                         help='manual epoch number (useful on restarts)')

@@ -13,14 +13,14 @@ def set_parser():
                         help="random seed")
     parser.add_argument("--amp", action="store_true",
                         help="use 16-bit (mixed) precision through NVIDIA apex AMP")
-    parser.add_argument("--opt_level", type=str, default="O2",
+    parser.add_argument("--opt_level", type=str, default="O1",
                         help="apex AMP optimization level selected in ['O0', 'O1', 'O2', and 'O3']."
                              "See details at https://nvidia.github.io/apex/amp.html")
     parser.add_argument("--local_rank", type=int, default=-1,
                         help="For distributed training: local_rank")
     parser.add_argument('--no-progress', action='store_true',
                     help="don't use progress bar")
-    parser.add_argument('--eval_only', type=int, default=0,
+    parser.add_argument('--eval_only', type=int, default=1,#原本是0
                         help='1 if evaluation mode ')
     parser.add_argument('--num_classes', type=int, default=6,
                         help='for cifar10')
@@ -61,15 +61,15 @@ def set_parser():
                         help='epoch to start fixmatch training')
     parser.add_argument('--mu', default=2, type=int,
                         help='coefficient of unlabeled batch size')
-    parser.add_argument('--total-steps', default=2 ** 19, type=int,
-                        help='number of total steps to run')
+    parser.add_argument('--total-steps', default=1, type=int,
+                        help='number of total steps to run') #2 ** 19
     parser.add_argument('--epochs', default=2, type=int,#方便测试，原来是512
                         help='number of epochs to run')
     parser.add_argument('--threshold', default=0.0, type=float,
                         help='pseudo label threshold')
     ##
-    parser.add_argument('--eval-step', default=2, type=int,
-                        help='number of eval steps to run')
+    parser.add_argument('--eval-step', default=1, type=int,
+                        help='number of eval steps to run')#1024
 
     parser.add_argument('--start-epoch', default=0, type=int,
                         help='manual epoch number (useful on restarts)')

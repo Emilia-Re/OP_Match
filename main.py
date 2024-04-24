@@ -55,7 +55,7 @@ def main():
         torch.distributed.barrier()
 
     labeled_trainloader, unlabeled_dataset, test_loader, val_loader, ood_loaders \
-        = set_dataset(args)
+        = set_dataset(args)   #test_loader是原始数据集的测试集，不包含其他数据集的ood数据
 
     model, optimizer, scheduler = set_models(args)
     logger.info("Total params: {:.2f}M".format(

@@ -1,7 +1,7 @@
-python main.py  \
+ CUDA_VISIBLE_DEVICES=1 python main.py  \
 --dataset cifar10 \
 --num-labeled  400  \
---out myResult \
+--out cifar10_400 \
 --arch wideresnet \
 --lambda_oem 0.1 \
 --lambda_socr 0.5

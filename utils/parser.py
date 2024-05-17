@@ -20,7 +20,7 @@ def set_parser():
                         help="For distributed training: local_rank")
     parser.add_argument('--no-progress', action='store_true',
                     help="don't use progress bar")
-    parser.add_argument('--eval_only', type=int, default=1,#原本是0
+    parser.add_argument('--eval_only', type=int, default=0,#原本是0
                         help='1 if evaluation mode ')
     parser.add_argument('--num_classes', type=int, default=6,
                         help='for cifar10')
@@ -57,18 +57,18 @@ def set_parser():
     parser.add_argument('--lambda_socr', default=0.5, type=float,
                     help='coefficient of SOCR loss, 0.5 for CIFAR10, ImageNet, '
                          '1.0 for CIFAR100')
-    parser.add_argument('--start_fix', default=1, type=int,
+    parser.add_argument('--start_fix', default=10, type=int,
                         help='epoch to start fixmatch training')
     parser.add_argument('--mu', default=2, type=int,
                         help='coefficient of unlabeled batch size')
-    parser.add_argument('--total-steps', default=1, type=int,
+    parser.add_argument('--total-steps', default=2**19, type=int,
                         help='number of total steps to run') #2 ** 19
-    parser.add_argument('--epochs', default=2, type=int,#方便测试，原来是512
+    parser.add_argument('--epochs', default=512, type=int,#方便测试，原来是512
                         help='number of epochs to run')
     parser.add_argument('--threshold', default=0.0, type=float,
                         help='pseudo label threshold')
     ##
-    parser.add_argument('--eval-step', default=1, type=int,
+    parser.add_argument('--eval-step', default=1024, type=int,
                         help='number of eval steps to run')#1024
 
     parser.add_argument('--start-epoch', default=0, type=int,

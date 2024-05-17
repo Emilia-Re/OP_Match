@@ -173,8 +173,8 @@ def train(args, labeled_trainloader, unlabeled_dataset, test_loader, val_loader,
 
             else:
                 L_fix = torch.zeros(1).to(args.device).mean()
-            loss = Lx + Lo + args.lambda_oem * L_oem  \
-                   + args.lambda_socr * L_socr + L_fix
+            loss = Lx + Lo*0 + args.lambda_oem * L_oem*0  \
+                   + args.lambda_socr * L_socr*0 + L_fix
             if args.amp:
                 with amp.scale_loss(loss, optimizer) as scaled_loss:
                     scaled_loss.backward()

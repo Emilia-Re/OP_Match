@@ -7,14 +7,15 @@ from utils import set_model_config, \
     set_seed
 from eval import eval_model
 from trainer import train
-
-logger = logging.getLogger(__name__)
+from utils.logger import get_logger
 
 
 def main():
     args = set_parser()
     global best_acc
     global best_acc_val
+
+    logger = get_logger(args.save_name, args.save_path, logger_level)
 
     #用于单卡训练
     # try:

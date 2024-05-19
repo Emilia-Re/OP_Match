@@ -2,6 +2,20 @@ import argparse
 
 __all__ = ['set_parser']
 
+from ruamel import yaml
+
+
+def over_write_args_from_file(args, yml):
+    """
+    overwrite arguments acocrding to config file
+    """
+    if yml == '':
+        return
+    with open(yml, 'r', encoding='utf-8') as f:
+        dic = yaml.load(f.read(), Loader=yaml.Loader)
+        for k in dic:
+            setattr(args, k, dic[k])
+
 def set_parser():
     parser = argparse.ArgumentParser(description='PyTorch OpenMatch Training')
     ## Computational Configurations
@@ -62,15 +76,13 @@ def set_parser():
     parser.add_argument('--mu', default=2, type=int,
                         help='coefficient of unlabeled batch size')
     parser.add_argument('--total-steps', default=2**19, type=int,
-                        help='number of total steps to run') #2 ** 19
-    parser.add_argument('--epochs', default=512, type=int,#方便测试，原来是512
+                        help='number of total steps to run')
+    parser.add_argument('--epochs', default=512, type=int,
                         help='number of epochs to run')
     parser.add_argument('--threshold', default=0.0, type=float,
                         help='pseudo label threshold')
-    ##
     parser.add_argument('--eval-step', default=1024, type=int,
-                        help='number of eval steps to run')#1024
-
+                        help='number of eval steps to run')
     parser.add_argument('--start-epoch', default=0, type=int,
                         help='manual epoch number (useful on restarts)')
     parser.add_argument('--batch-size', default=64, type=int,
@@ -90,6 +102,13 @@ def set_parser():
     parser.add_argument('--T', default=1, type=float,
                         help='pseudo label temperature')
 
+    parser.add_argument('--save_path',default='',type=str,
+                        help='directory to store the result')
+
+    # config file
+    parser.add_argument('--c', type=str, default='')
+
 
     args = parser.parse_args()
+    over_write_args_from_file(args, args.c)
     return args

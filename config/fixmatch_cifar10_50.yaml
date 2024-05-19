@@ -14,6 +14,7 @@ total_steps: 2**19
 epochs: 512
 eval_step: 1024
 start_fix: 10 #fixmatch对无标记数据的处理在多少epoch后开始
+
 #total_steps: 2
 #epochs: 2
 #eval_step: 10

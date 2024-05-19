@@ -4,7 +4,7 @@ save_path: result/fixmatch_cifar10_300
 arch: wideresnet
 lambda_oem: 0.1
 lambda_socr: 0.5
-batch_size: 128
+batch_size: 64
 lr: 0.03
 expand_labels: True
 seed: 0

@@ -1,0 +1,20 @@
+dataset: cifar10
+num_labeled:  50
+save_path: result/fixmatch_cifar10_50
+arch: wideresnet
+lambda_oem: 0.1
+lambda_socr: 0.5
+batch_size: 128
+lr: 0.03
+expand_labels: True
+seed: 0
+opt_level: O2
+mu: 2
+#total_steps: 2**19
+#epochs: 512
+#eval_step: 1024
+#start_fix: 10 #fixmatch对无标记数据的处理在多少epoch后开始
+total_steps: 2
+epochs: 2
+eval_step: 10
+start_fix: 1 #fixmatch对无标记数据的处理在多少epoch后开始

@@ -15,17 +15,12 @@ def main():
     global best_acc
     global best_acc_val
 
-    logger = get_logger(args.save_name, args.save_path, logger_level)
+    logger = get_logger( args.save_path)
 
-    #用于单卡训练
-    # try:
-    #     args.local_rank =int(os.environ["LOCAL_RANK"])
-    # except:
-    #     pass
 
     if args.local_rank == -1:
-        # device = torch.device('cuda', args.gpu_id)
-        device=torch.device("cpu")
+        device = torch.device('cuda', args.gpu_id)
+        # device=torch.device("gpu")
         args.world_size = 1
         args.n_gpu = torch.cuda.device_count()
     else:
@@ -49,8 +44,8 @@ def main():
     if args.seed is not None:
         set_seed(args)
     if args.local_rank in [-1, 0]:
-        os.makedirs(args.out, exist_ok=True)
-        args.writer = SummaryWriter(args.out)
+        os.makedirs(args.save_path, exist_ok=True)
+        args.writer = SummaryWriter(args.save_path)
     set_model_config(args)
 
     if args.local_rank not in [-1, 0]:

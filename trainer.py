@@ -264,7 +264,7 @@ def train(args, labeled_trainloader, unlabeled_dataset, test_loader, val_loader,
                 'best_acc': best_acc,
                 'optimizer': optimizer.state_dict(),
                 'scheduler': scheduler.state_dict(),
-            }, is_best, args.out)
+            }, is_best, args.save_path)
             test_accs.append(test_acc_close)
             logger.info('Best val closed acc: {:.3f}'.format(best_acc_val))
             logger.info('Valid closed acc: {:.3f}'.format(close_valid))

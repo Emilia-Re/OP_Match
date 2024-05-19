@@ -2,7 +2,7 @@ import logging
 import os
 
 
-def get_logger(name, save_path=None, level='INFO'):
+def get_logger(name=None, save_path=None, level='INFO'):
     """
     create logger function
     save_path:用于存储的文件夹的名字，该问价夹下会建立一个log.txt文件

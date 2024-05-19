@@ -38,9 +38,9 @@ def set_parser():
                         help='1 if evaluation mode ')
     parser.add_argument('--num_classes', type=int, default=6,
                         help='for cifar10')
-
-    parser.add_argument('--out', default='result',
-                        help='directory to output the result')
+    #
+    # parser.add_argument('--out', default='result',
+    #                     help='directory to output the result')
     parser.add_argument('--resume', default='', type=str,
                         help='path to latest checkpoint (default: none)')
     parser.add_argument('--root', default='./data', type=str,

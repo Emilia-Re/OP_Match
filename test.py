@@ -6,4 +6,7 @@ for k,v in vars(args).items():
 print(args)
 print("__________________")
 print(type(args))
+print(args.total_steps)
+print(type(args.total_steps))
+
 # print(NameSpace)

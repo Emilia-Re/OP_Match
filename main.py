@@ -15,7 +15,7 @@ def main():
     global best_acc
     global best_acc_val
 
-    logger = get_logger( args.save_path)
+    logger = get_logger( save_path=args.save_path)
 
 
     if args.local_rank == -1:

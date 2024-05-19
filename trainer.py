@@ -89,8 +89,7 @@ def train(args, labeled_trainloader, unlabeled_dataset, test_loader, val_loader,
 
         if epoch >= args.start_fix:
             ## pick pseudo-inliers
-            exclude_dataset(args, unlabeled_dataset, ema_model.ema)
-
+            exclude_dataset(args, unlabeled_dataset, ema_model.ema)#这里比较耗时间
 
         unlabeled_trainloader = DataLoader(unlabeled_dataset,
                                            sampler = train_sampler(unlabeled_dataset),
@@ -117,14 +116,15 @@ def train(args, labeled_trainloader, unlabeled_dataset, test_loader, val_loader,
                     labeled_trainloader.sampler.set_epoch(labeled_epoch)
                 labeled_iter = iter(labeled_trainloader)
                 (_, inputs_x_s, inputs_x), targets_x = labeled_iter.__next__()
-            try:
-                (inputs_u_w, inputs_u_s, _), _ = unlabeled_iter.__next__()
-            except:
-                if args.world_size > 1:
-                    unlabeled_epoch = unlabeled_epoch+1
-                    unlabeled_trainloader.sampler.set_epoch(unlabeled_epoch)
-                unlabeled_iter = iter(unlabeled_trainloader)
-                (inputs_u_w, inputs_u_s, _), _ = unlabeled_iter.__next__()
+            if len(unlabeled_trainloader)!=0:
+                try:
+                    (inputs_u_w, inputs_u_s, _), _ = unlabeled_iter.__next__()
+                except:
+                    if args.world_size > 1:
+                        unlabeled_epoch = unlabeled_epoch+1
+                        unlabeled_trainloader.sampler.set_epoch(unlabeled_epoch)
+                    unlabeled_iter = iter(unlabeled_trainloader)
+                    (inputs_u_w, inputs_u_s, _), _ = unlabeled_iter.__next__()
             try:
                 (inputs_all_w, inputs_all_s, _), _ = unlabeled_all_iter.__next__()
             except:

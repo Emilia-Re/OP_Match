@@ -18,3 +18,4 @@ start_fix: 10 #fixmatch对无标记数据的处理在多少epoch后开始
 #epochs: 2
 #eval_step: 10
 #start_fix: 10 #fixmatch对无标记数据的处理在多少epoch后开始
+resume: ./result/fixmatch_cifar10_600/checkpoint.pth.tar

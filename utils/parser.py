@@ -42,7 +42,7 @@ def set_parser():
     # parser.add_argument('--out', default='result',
     #                     help='directory to output the result')
     parser.add_argument('--resume', default='', type=str,
-                        help='path to latest checkpoint (default: none)')
+                        help='path to latest checkpoint (default: none)')#checkpoint文件的路径（包含文件名）
     parser.add_argument('--root', default='./data', type=str,
                         help='path to data directory')
     parser.add_argument('--dataset', default='cifar10', type=str,

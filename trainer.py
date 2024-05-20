@@ -101,8 +101,8 @@ def train(args, labeled_trainloader, unlabeled_dataset, test_loader, val_loader,
                                            batch_size=args.batch_size * args.mu,
                                            num_workers=args.num_workers,
                                            drop_last=True)
-
-        unlabeled_iter = iter(unlabeled_trainloader)
+        if len(unlabeled_dataset)!=0:
+            unlabeled_iter = iter(unlabeled_trainloader)
         unlabeled_all_iter = iter(unlabeled_trainloader_all)
 
         for batch_idx in range(args.eval_step):
@@ -116,7 +116,7 @@ def train(args, labeled_trainloader, unlabeled_dataset, test_loader, val_loader,
                     labeled_trainloader.sampler.set_epoch(labeled_epoch)
                 labeled_iter = iter(labeled_trainloader)
                 (_, inputs_x_s, inputs_x), targets_x = labeled_iter.__next__()
-            if len(unlabeled_trainloader)!=0:
+            if len(unlabeled_dataset)!=0:
                 try:
                     (inputs_u_w, inputs_u_s, _), _ = unlabeled_iter.__next__()
                 except:

@@ -90,12 +90,12 @@ def train(args, labeled_trainloader, unlabeled_dataset, test_loader, val_loader,
         if epoch >= args.start_fix:
             ## pick pseudo-inliers
             exclude_dataset(args, unlabeled_dataset, ema_model.ema)#这里比较耗时间
-
-        unlabeled_trainloader = DataLoader(unlabeled_dataset,
-                                           sampler = train_sampler(unlabeled_dataset),
-                                           batch_size = args.batch_size * args.mu,
-                                           num_workers = args.num_workers,
-                                           drop_last = True)
+        if len(unlabeled_dataset)!=0:
+            unlabeled_trainloader = DataLoader(unlabeled_dataset,
+                                               sampler = train_sampler(unlabeled_dataset),
+                                               batch_size = args.batch_size * args.mu,
+                                               num_workers = args.num_workers,
+                                               drop_last = True)
         unlabeled_trainloader_all = DataLoader(unlabeled_dataset_all,
                                            sampler=train_sampler(unlabeled_dataset_all),
                                            batch_size=args.batch_size * args.mu,

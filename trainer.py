@@ -123,8 +123,9 @@ def train(args, labeled_trainloader, unlabeled_dataset, test_loader, val_loader,
                     if args.world_size > 1:
                         unlabeled_epoch = unlabeled_epoch+1
                         unlabeled_trainloader.sampler.set_epoch(unlabeled_epoch)
-                    unlabeled_iter = iter(unlabeled_trainloader)
-                    (inputs_u_w, inputs_u_s, _), _ = unlabeled_iter.__next__()
+                    if len(unlabeled_trainloader)!=0:
+                        unlabeled_iter = iter(unlabeled_trainloader)
+                        (inputs_u_w, inputs_u_s, _), _ = unlabeled_iter.__next__()
             try:
                 (inputs_all_w, inputs_all_s, _), _ = unlabeled_all_iter.__next__()
             except:
@@ -159,7 +160,7 @@ def train(args, labeled_trainloader, unlabeled_dataset, test_loader, val_loader,
             L_socr = torch.mean(torch.sum(torch.sum(torch.abs(
                 logits_open_u1 - logits_open_u2)**2, 1), 1))
 
-            if epoch >= args.start_fix:
+            if epoch >= args.start_fix and  len(unlabeled_dataset)!=0  and len(unlabeled_trainloader)!=0:
                 inputs_ws = torch.cat([inputs_u_w, inputs_u_s], 0).to(args.device)
                 logits, logits_open_fix = model(inputs_ws)
                 logits_u_w, logits_u_s = logits.chunk(2)

@@ -9,6 +9,7 @@ This implementation is based on [Pytorch-FixMatch](https://github.com/kekmodel/F
 ## Requirement 
  use iomatch-requirement.txt
 
+
 ## Requirements(deprecated)
 - python 3.6+
 - torch 1.4
@@ -21,6 +22,17 @@ This implementation is based on [Pytorch-FixMatch](https://github.com/kekmodel/F
 
 
 See [Pytorch-FixMatch](https://github.com/kekmodel/FixMatch-pytorch) for the details.
+
+## Fixmatch Experiment 
+| exp_group   |close-set acc|
+|-------------|----|
+| cifar10-50  |34.796|
+| cifar10-100 |49.408|
+| cifar10-150 |50.337|
+| cifar10-300 |69.568|
+| cifar10-600 |76.534|
+
+
 
 ## Usage
 

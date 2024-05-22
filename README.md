@@ -24,6 +24,10 @@ This implementation is based on [Pytorch-FixMatch](https://github.com/kekmodel/F
 See [Pytorch-FixMatch](https://github.com/kekmodel/FixMatch-pytorch) for the details.
 
 ## Fixmatch Experiment 
+
+原始cifar10中6个动物类当作已知类，其他当ood，每类分别使用标记数据50，100，150，300，600进行实验，
+原始cifar10测试集中的6个动物类取出，用于测试闭集分类精确度，实验结果如下。
+
 | exp_group   |close-set acc|
 |-------------|----|
 | cifar10-50  |34.796|
